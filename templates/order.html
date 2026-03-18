@@ -1,0 +1,75 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="buyurtma-wrapper">
+
+    <!-- Chap: Forma -->
+    <div>
+        <h2>Buyurtma berish</h2>
+
+        {% if request.query_params.get("muvaffaqiyat") %}
+        <p class="success">Buyurtmangiz qabul qilindi! Tez orada bog'lanamiz.</p>
+        {% endif %}
+
+        <form method="post" action="/buyurtma" class="forma">
+            <label>Ismingiz</label>
+            <input type="text" name="ism" required placeholder="Ism Familiya">
+
+            <label>Telefon</label>
+            <input type="text" name="telefon" required placeholder="+998 ( ) --- -- --">
+
+            <label>Mahsulot tanlang</label>
+            <select name="mahsulot_id">
+                {% for m in mahsulotlar %}
+                <option value="{{ m.id }}" {% if tanlangan == m.id %}selected{% endif %}>
+                    {{ m.nomi }} — {{ m.narxi }} so'm
+                </option>
+                {% endfor %}
+            </select>
+
+            <label>Izoh (ixtiyoriy)</label>
+            <textarea name="izoh" placeholder="Qo'shimcha xohishlar..."></textarea>
+
+            <button type="submit">Buyurtma berish</button>
+        </form>
+    </div>
+
+    <!-- O'ng: Nima uchun biz -->
+    <div class="nima-uchun">
+        <h3>Nima uchun biz?</h3>
+
+        <div class="ustunlik">
+            <div class="ustunlik-icon">🚚</div>
+            <a href="/aloqa" class="ustunlik-link">
+                <strong>O'rnatib berish </strong>
+                <p>Buyurtmadan 10 kun ichida eshigingizga</p>
+            </a>
+        </div>
+<!--
+        <div class="ustunlik">
+            <div class="ustunlik-icon">✅</div>
+            <a href="/aloqa" class="ustunlik-link">
+                <strong>Sifat kafolati</strong>
+                <p>Har bir parda sifat nazoratidan o'tadi</p>
+            </a>
+        </div>
+-->
+    <div class="ustunlik">
+        <div class="ustunlik-icon">💰</div>
+        <a href="/katalog" class="ustunlik-link">
+            <strong>Arzon narx</strong>
+            <p>Bozordagi eng qulay narxlar bizda</p>
+        </a>
+    </div>
+
+    <div class="ustunlik">
+        <div class="ustunlik-icon">✂️</div>
+        <a href="/katalog" class="ustunlik-link">
+        <strong>Maxsus o'lcham</strong>
+            <p>Xonangizga mos o'lchamda tikiladi</p>
+        </a>
+    </div>
+</div>
+
+{% endblock %}

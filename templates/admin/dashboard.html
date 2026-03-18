@@ -1,0 +1,81 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:32px;">
+    <h2>Admin panel</h2>
+    <a href="/admin/logout" class="ochir" style="padding: 8px 16px; border-radius: 6px;">Chiqish</a>
+</div>
+
+<!-- Statistika -->
+<div class="stat-grid">
+    <div class="stat-karta">
+        <h3>{{ mahsulotlar|length }}</h3>
+        <p>Mahsulotlar</p>
+    </div>
+    <div class="stat-karta">
+        <h3>{{ buyurtmalar|length }}</h3>
+        <p>Buyurtmalar</p>
+    </div>
+    <div class="stat-karta">
+        <h3>{{ xabarlar|length }}</h3>
+        <p>Xabarlar</p>
+    </div>
+</div>
+<!-- Mahsulot qo'shish -->
+<h2>Mahsulot qo'shish</h2>
+<form method="post" action="/admin/mahsulot/qosh" 
+      class="forma" enctype="multipart/form-data">
+    <label>Nomi</label>
+    <input type="text" name="nomi" required>
+
+    <label>Narxi</label>
+    <input type="number" name="narxi" required>
+
+    <label>Rasm</label>
+    <input type="file" name="rasm" accept="image/*" required>
+
+    <button type="submit">Qo'shish</button>
+</form>
+
+<!-- Mahsulotlar -->
+<h2 style="margin-top:40px">Mahsulotlar</h2>
+<table class="jadval">
+    <tr><th>Nomi</th><th>Narxi</th><th>O'chirish</th></tr>
+    {% for m in mahsulotlar %}
+    <tr>
+        <td>{{ m.nomi }}</td>
+        <td>{{ m.narxi }} so'm</td>
+        <td><a href="/admin/mahsulot/ochir/{{ m.id }}" class="ochir">O'chirish</a></td>
+    </tr>
+    {% endfor %}
+</table>
+
+<!-- Buyurtmalar -->
+<h2 style="margin-top:40px">Buyurtmalar</h2>
+<table class="jadval">
+    <tr><th>Ism</th><th>Telefon</th><th>Mahsulot ID</th><th>Izoh</th></tr>
+    {% for b in buyurtmalar %}
+    <tr>
+        <td>{{ b.ism }}</td>
+        <td>{{ b.telefon }}</td>
+        <td>{{ b.mahsulot_id }}</td>
+        <td>{{ b.izoh }}</td>
+    </tr>
+    {% endfor %}
+</table>
+
+<!-- Xabarlar -->
+<h2 style="margin-top:40px">Xabarlar</h2>
+<table class="jadval">
+    <tr><th>Ism</th><th>Telefon</th><th>Xabar</th></tr>
+    {% for x in xabarlar %}
+    <tr>
+        <td>{{ x.ism }}</td>
+        <td>{{ x.telefon }}</td>
+        <td>{{ x.xabar }}</td>
+    </tr>
+    {% endfor %}
+</table>
+
+{% endblock %}

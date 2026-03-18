@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<!-- Hero -->
+<div class="hero">
+    <img src="/static/images/bosh_rasm.jpg" alt="Nastarin Pardalar">
+    <div class="hero-matn">
+        <h1>NASTARIN PARDALAR</h1>
+        <p>Sifatli va chiroyli pardalar</p>
+        <a href="/katalog" class="btn">Katalogni ko'rish</a>
+    </div>
+</div>
+
+<!-- Xususiyatlar -->
+<div class="xususiyatlar">
+    <a href="/katalog" class="xususiyat">
+        <div class="icon">✂️</div>
+        <h3>Maxsus tikuv</h3>
+        <p>Har bir parda mijoz xohishiga ko'ra alohida tikiladi</p>
+    </a>
+    <a href="/katalog" class="xususiyat">
+        <div class="icon">🎨</div>
+        <h3>Keng assortiment</h3>
+        <p>Yuzdan ortiq rang va mato turlaridan tanlang</p>
+    </a>
+    <a href="/buyurtma" class="xususiyat">
+        <div class="icon">🚚</div>
+        <h3>Tez yetkazish va o'rnatib berish</h3>
+        <p>Buyurtma berilgandan 10 kun ichida o'rnatib beramiz</p>
+    </a>
+</div>
+
+<!-- Mashhur mahsulotlar -->
+<h2 style="margin-top: 60px">Mashhur pardalar</h2>
+<div class="katalog-grid">
+    {% for mahsulot in mahsulotlar %}
+    <div class="karta">
+        <img src="/static/images/{{ mahsulot.tasviri }}" alt="{{ mahsulot.nomi }}">
+        <div class="karta-matn">
+            <h3>{{ mahsulot.nomi }}</h3>
+            <p>{{ mahsulot.narxi }} so'm</p>
+            <a href="/buyurtma?mahsulot={{ mahsulot.id }}">Buyurtma berish</a>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+
+{% endblock %}
