@@ -1,9 +1,9 @@
-.gitattributes
-__pycache__
+*.gitattributes
+*.db
+*.vscode
+*.env
+*.venv
+requests.txt
 venv
 env
-.db
-.vscode
-.env
-.venv
-requests.txt
+__pycache__
