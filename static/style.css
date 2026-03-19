@@ -514,3 +514,15 @@ footer {
     margin-bottom: 16px;
     border-left: 4px solid #c0392b;
 }
+
+.telefon-link {
+    color: #8B4513;
+    font-size: 16px;
+    text-decoration: none;
+    font-weight: bold;
+    border-bottom: 1px dashed #8B4513;
+}
+
+.telefon-link:hover {
+    color: #6b3410;
+}

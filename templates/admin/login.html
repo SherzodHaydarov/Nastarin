@@ -14,10 +14,28 @@
         <input type="text" name="login" required placeholder="Login">
 
         <label>Parol</label>
-        <input type="password" name="parol" required placeholder="Parol">
+        <div style="position: relative;">
+            <input type="password" name="parol" id="parol" required placeholder="Parol" style="width:100%;">
+            <span onclick="parolKoʻrsat()" style="
+                position: absolute;
+                right: 12px;
+                top: 50%;
+                transform: translateY(-50%);
+                cursor: pointer;
+                font-size: 18px;
+                user-select: none;
+            ">👁️</span>
+        </div>
 
         <button type="submit">Kirish</button>
     </form>
 </div>
+
+<script>
+function parolKoʻrsat() {
+    const parol = document.getElementById("parol");
+    parol.type = parol.type === "password" ? "text" : "password";
+}
+</script>
 
 {% endblock %}

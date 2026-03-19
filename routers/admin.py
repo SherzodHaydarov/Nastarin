@@ -13,7 +13,7 @@ router = APIRouter()
 templates = Jinja2Templates(directory="templates")
 
 ADMIN_LOGIN    = "admin"
-ADMIN_PAROL    = "nastarin2026"
+ADMIN_PAROL    = "Volidam@"
 SESSIYA_KALIT  = "nastarin_session"
 
 def admin_tekshir(request: Request):
@@ -83,4 +83,20 @@ def mahsulot_ochir(request: Request, id: int, db: Session = Depends(get_db)):
             os.remove(rasm_yoli)
         db.delete(mahsulot)
         db.commit()
+    return RedirectResponse(url="/admin", status_code=303)
+
+@router.get("/admin/buyurtma/ochir/{id}")
+def buyurtma_ochir(request: Request, id: int, db: Session = Depends(get_db)):
+    if not admin_tekshir(request):
+        return RedirectResponse(url="/admin/login", status_code=303)
+    db.query(Buyurtma).filter(Buyurtma.id == id).delete()
+    db.commit()
+    return RedirectResponse(url="/admin", status_code=303)
+
+@router.get("/admin/xabar/ochir/{id}")
+def xabar_ochir(request: Request, id: int, db: Session = Depends(get_db)):
+    if not admin_tekshir(request):
+        return RedirectResponse(url="/admin/login", status_code=303)
+    db.query(Xabar).filter(Xabar.id == id).delete()
+    db.commit()
     return RedirectResponse(url="/admin", status_code=303)

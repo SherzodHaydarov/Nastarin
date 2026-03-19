@@ -54,13 +54,14 @@
 <!-- Buyurtmalar -->
 <h2 style="margin-top:40px">Buyurtmalar</h2>
 <table class="jadval">
-    <tr><th>Ism</th><th>Telefon</th><th>Mahsulot ID</th><th>Izoh</th></tr>
+    <tr><th>Ism</th><th>Telefon</th><th>Mahsulot ID</th><th>Izoh</th><th>O'chirish</th></tr>
     {% for b in buyurtmalar %}
     <tr>
         <td>{{ b.ism }}</td>
         <td>{{ b.telefon }}</td>
         <td>{{ b.mahsulot_id }}</td>
         <td>{{ b.izoh }}</td>
+        <td><a href="/admin/buyurtma/ochir/{{ b.id }}" class="ochir">O'chirish</a></td>
     </tr>
     {% endfor %}
 </table>
@@ -68,12 +69,13 @@
 <!-- Xabarlar -->
 <h2 style="margin-top:40px">Xabarlar</h2>
 <table class="jadval">
-    <tr><th>Ism</th><th>Telefon</th><th>Xabar</th></tr>
+    <tr><th>Ism</th><th>Telefon</th><th>Xabar</th><th>O'chirish</th></tr>
     {% for x in xabarlar %}
     <tr>
         <td>{{ x.ism }}</td>
         <td>{{ x.telefon }}</td>
         <td>{{ x.xabar }}</td>
+        <td><a href="/admin/xabar/ochir/{{ x.id }}" class="ochir">O'chirish</a></td>
     </tr>
     {% endfor %}
 </table>
