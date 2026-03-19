@@ -472,6 +472,16 @@ footer {
     background: #fdf6f0;
 }
 
+.jadval select {
+    padding: 6px 10px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    font-size: 13px;
+    background: #fdfaf8;
+    cursor: pointer;
+    color: #333;
+}
+
 .ochir {
     color: #c0392b;
     text-decoration: none;

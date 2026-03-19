@@ -93,6 +93,18 @@ def buyurtma_ochir(request: Request, id: int, db: Session = Depends(get_db)):
     db.commit()
     return RedirectResponse(url="/admin", status_code=303)
 
+@router.post("/admin/buyurtma/holat/{id}")
+def buyurtma_holat(request: Request, id: int,
+                   holat: str = Form(...),
+                   db: Session = Depends(get_db)):
+    if not admin_tekshir(request):
+        return RedirectResponse(url="/admin/login", status_code=303)
+    buyurtma = db.query(Buyurtma).filter(Buyurtma.id == id).first()
+    if buyurtma:
+        setattr(buyurtma, "holat", holat)
+        db.commit()
+    return RedirectResponse(url="/admin", status_code=303)
+
 @router.get("/admin/xabar/ochir/{id}")
 def xabar_ochir(request: Request, id: int, db: Session = Depends(get_db)):
     if not admin_tekshir(request):

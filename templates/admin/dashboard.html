@@ -54,13 +54,31 @@
 <!-- Buyurtmalar -->
 <h2 style="margin-top:40px">Buyurtmalar</h2>
 <table class="jadval">
-    <tr><th>Ism</th><th>Telefon</th><th>Mahsulot ID</th><th>Izoh</th><th>O'chirish</th></tr>
+    <tr>
+        <th>Ism</th>
+        <th>Telefon</th>
+        <th>Mahsulot ID</th>
+        <th>Izoh</th>
+        <th>Holat</th>
+        <th>O'chirish</th>
+    </tr>
     {% for b in buyurtmalar %}
     <tr>
         <td>{{ b.ism }}</td>
         <td>{{ b.telefon }}</td>
         <td>{{ b.mahsulot_id }}</td>
         <td>{{ b.izoh }}</td>
+        <td>
+            <form method="post" action="/admin/buyurtma/holat/{{ b.id }}">
+                <select name="holat" onchange="this.form.submit()">
+                    <option {% if b.holat == "Yangi" %}selected{% endif %}>Yangi</option>
+                    <option {% if b.holat == "Qabul qilindi" %}selected{% endif %}>Qabul qilindi</option>
+                    <option {% if b.holat == "Tayyorlanmoqda" %}selected{% endif %}>Tayyorlanmoqda</option>
+                    <option {% if b.holat == "Tayyor" %}selected{% endif %}>Tayyor</option>
+                    <option {% if b.holat == "Yetkazildi" %}selected{% endif %}>Yetkazildi</option>
+                </select>
+            </form>
+        </td>
         <td><a href="/admin/buyurtma/ochir/{{ b.id }}" class="ochir">O'chirish</a></td>
     </tr>
     {% endfor %}
