@@ -71,12 +71,12 @@ async def mahsulot_qosh(
         return RedirectResponse(url="/admin/login", status_code=303)
 
     rasm_bytes = await rasm.read()
-    rasm_nomi = rasm.filename
+    rasm_nomi = str(rasm.filename)
     
     supabase.storage.from_(SUPABASE_BUCKET).upload(
         path=rasm_nomi,
         file=rasm_bytes,
-        file_options={"content-type": rasm.content_type}
+        file_options={"content-type": str(rasm.content_type)}
     )
 
     rasm_url = f"{SUPABASE_URL}/storage/v1/object/public/{SUPABASE_BUCKET}/{rasm_nomi}"
