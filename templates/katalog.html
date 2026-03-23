@@ -7,7 +7,7 @@
 <div class="katalog-grid">
     {% for mahsulot in mahsulotlar %}
     <div class="karta">
-        <img src="/static/images/{{ mahsulot.tasviri }}" alt="{{ mahsulot.nomi }}">
+        <img src="{{ mahsulot.tasviri }}" alt="{{ mahsulot.nomi }}">
         <h3>{{ mahsulot.nomi }}</h3>
         <p>{{ mahsulot.narxi }} so'm</p>
         <a href="/buyurtma?mahsulot={{ mahsulot.id }}">Buyurtma berish</a>
