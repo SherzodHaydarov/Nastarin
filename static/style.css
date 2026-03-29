@@ -50,14 +50,11 @@ main {
     max-width: 1100px;
     margin: 40px auto;
     padding: 0 24px;
+    width: 100%;
 }
 
 .sahifa-wrapper {
-    display: flex;
-    justify-content: center;
-    margin: 0 auto;
-    max-width: 1200px;
-    padding: 0 24px;
+    width: 100%;
 }
 
 .buyurtma-wrapper {
