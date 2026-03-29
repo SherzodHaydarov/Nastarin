@@ -538,88 +538,91 @@ footer {
 }
 
 /* --- TUNGI REJIM --- */
-.tungi body {
+html.tungi body {
     background: #1a1a2e;
     color: #e0e0e0;
 }
 
-.tungi header {
+html.tungi header {
     background: linear-gradient(90deg, #0f0f1a, #1a1a2e);
     border-bottom: 3px solid #4a4a6a;
 }
 
-.tungi footer {
+html.tungi footer {
     background: linear-gradient(90deg, #0f0f1a, #1a1a2e);
 }
 
-.tungi .karta {
+html.tungi .karta {
     background: #16213e;
     box-shadow: 0 2px 12px rgba(0,0,0,0.4);
 }
 
-.tungi .karta h3 {
+html.tungi .karta h3 {
     color: #e0e0e0;
 }
 
-.tungi .forma {
+html.tungi .forma {
     background: #16213e;
 }
 
-.tungi .forma input,
-.tungi .forma select,
-.tungi .forma textarea {
+html.tungi .forma input,
+html.tungi .forma select,
+html.tungi .forma textarea {
     background: #0f0f1a;
     border-color: #4a4a6a;
     color: #e0e0e0;
 }
 
-.tungi .aloqa-info {
+html.tungi .aloqa-info {
     background: #16213e;
 }
 
-.tungi .aloqa-info p {
+html.tungi .aloqa-info p {
     color: #b0b0b0;
 }
 
-.tungi .jadval {
+html.tungi .jadval {
     background: #16213e;
 }
 
-.tungi .jadval td {
+html.tungi .jadval td {
     border-bottom: 1px solid #2a2a4a;
     color: #e0e0e0;
 }
 
-.tungi .jadval tr:hover td {
+html.tungi .jadval tr:hover td {
     background: #1a1a3e;
 }
 
-.tungi .stat-karta {
+html.tungi .stat-karta {
     background: #16213e;
 }
 
-.tungi .stat-karta p {
+html.tungi .stat-karta p {
     color: #b0b0b0;
 }
 
-.tungi .reklama-blok {
-    background: #16213e;
-    border-color: #4a4a6a;
-    color: #6a6a8a;
-}
-
-.tungi .nima-uchun {
+html.tungi .nima-uchun {
     background: #16213e;
 }
 
-.tungi .xususiyat {
+html.tungi .xususiyat {
     background: #16213e;
 }
 
-.tungi .xususiyat h3 {
+html.tungi .xususiyat h3 {
     color: #c0a0a0;
 }
 
-.tungi .xususiyat p {
+html.tungi .xususiyat p {
     color: #b0b0b0;
+}
+
+html.tungi h2 {
+    color: #c0a0a0;
+    border-bottom-color: #4a4a6a;
+}
+
+html.tungi .login-wrapper .forma {
+    background: #16213e;
 }
