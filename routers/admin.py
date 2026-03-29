@@ -7,6 +7,7 @@ from models import Mahsulot, Buyurtma, Xabar
 from database import get_db
 from supabase import create_client
 import os
+import uuid
 from dotenv import load_dotenv
 
 load_dotenv()
@@ -20,8 +21,8 @@ supabase = create_client(SUPABASE_URL, SUPABASE_KEY)
 router = APIRouter()
 templates = Jinja2Templates(directory="templates")
 
-ADMIN_LOGIN = "admin"
-ADMIN_PAROL = "nastarin2026"
+ADMIN_LOGIN   = "admin"
+ADMIN_PAROL   = "nastarin2026"
 SESSIYA_KALIT = "nastarin_session"
 
 def admin_tekshir(request: Request):
@@ -71,8 +72,9 @@ async def mahsulot_qosh(
         return RedirectResponse(url="/admin/login", status_code=303)
 
     rasm_bytes = await rasm.read()
-    rasm_nomi = str(rasm.filename)
-    
+    kengaytma = str(rasm.filename).split(".")[-1]
+    rasm_nomi = f"{uuid.uuid4()}.{kengaytma}"
+
     supabase.storage.from_(SUPABASE_BUCKET).upload(
         path=rasm_nomi,
         file=rasm_bytes,

@@ -538,104 +538,88 @@ footer {
 }
 
 /* --- TUNGI REJIM --- */
-html.tungi body {
+.tungi body {
     background: #1a1a2e;
     color: #e0e0e0;
 }
 
-html.tungi header {
+.tungi header {
     background: linear-gradient(90deg, #0f0f1a, #1a1a2e);
     border-bottom: 3px solid #4a4a6a;
 }
 
-html.tungi footer {
+.tungi footer {
     background: linear-gradient(90deg, #0f0f1a, #1a1a2e);
 }
 
-html.tungi .karta {
+.tungi .karta {
     background: #16213e;
     box-shadow: 0 2px 12px rgba(0,0,0,0.4);
 }
 
-html.tungi .karta h3 {
+.tungi .karta h3 {
     color: #e0e0e0;
 }
 
-html.tungi .forma {
+.tungi .forma {
     background: #16213e;
 }
 
-html.tungi .forma input,
-html.tungi .forma select,
-html.tungi .forma textarea {
+.tungi .forma input,
+.tungi .forma select,
+.tungi .forma textarea {
     background: #0f0f1a;
     border-color: #4a4a6a;
     color: #e0e0e0;
 }
 
-html.tungi .aloqa-info {
+.tungi .aloqa-info {
     background: #16213e;
 }
 
-html.tungi .aloqa-info p {
+.tungi .aloqa-info p {
     color: #b0b0b0;
 }
 
-html.tungi .jadval {
+.tungi .jadval {
     background: #16213e;
 }
 
-html.tungi .jadval td {
+.tungi .jadval td {
     border-bottom: 1px solid #2a2a4a;
     color: #e0e0e0;
 }
 
-html.tungi .jadval tr:hover td {
+.tungi .jadval tr:hover td {
     background: #1a1a3e;
 }
 
-html.tungi .stat-karta {
+.tungi .stat-karta {
     background: #16213e;
 }
 
-html.tungi .stat-karta p {
+.tungi .stat-karta p {
     color: #b0b0b0;
 }
 
-html.tungi .reklama-blok {
+.tungi .reklama-blok {
     background: #16213e;
     border-color: #4a4a6a;
     color: #6a6a8a;
 }
 
-html.tungi .nima-uchun {
+.tungi .nima-uchun {
     background: #16213e;
 }
 
-html.tungi .xususiyat {
+.tungi .xususiyat {
     background: #16213e;
 }
 
-html.tungi .xususiyat h3 {
+.tungi .xususiyat h3 {
     color: #c0a0a0;
 }
 
-html.tungi .xususiyat p {
+.tungi .xususiyat p {
     color: #b0b0b0;
-}
-
-/* Tugma */
-#tema-tugma {
-    background: none;
-    border: none;
-    font-size: 20px;
-    cursor: pointer;
-    margin-left: 16px;
-    padding: 4px 8px;
-    border-radius: 6px;
-    transition: background 0.2s;
-}
-
-#tema-tugma:hover {
-    background: rgba(255,255,255,0.1);
 }
