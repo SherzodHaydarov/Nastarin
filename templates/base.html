@@ -1,48 +1,67 @@
 <!DOCTYPE html>
-<html lang="uz">
+<html lang="uz" id="html-root">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Nastarin Pardalar — Qarshi</title>
     <meta name="google-site-verification" content="yCUuUS2tIgAEcnaGiW1hwl2Rrtr0ACMsjpZ8COGodcI" />
-
-    <!-- SEO -->
-    <meta name="description" content="Nastarin pardalar. Sifatli va chiroyli pardalar. Qarshi tuman, Yangi Xonabod MFY.">
+    <meta name="description" content="Nastarin pardalar tikish tsеxi. Sifatli va chiroyli pardalar. Qarshi tuman, Yangi Xonabod MFY.">
     <meta name="keywords" content="parda, pardalar, tikish, Qarshi, Nastarin, chiroyli pardalar">
     <meta name="author" content="Nastarin Pardalar">
-
-    <!-- Google da chiroyli ko'rinish -->
     <meta property="og:title" content="Nastarin Pardalar — Qarshi">
     <meta property="og:description" content="Sifatli va chiroyli pardalar. Buyurtma bering!">
     <meta property="og:url" content="https://nastarin.up.railway.app">
     <meta property="og:type" content="website">
-
     <link rel="stylesheet" href="/static/style.css">
 </head>
 <body>
 
     <header>
-        <h1>Nastarin</h1>
+        <h1>"Nastarin" Pardalari</h1>
         <nav>
             <a href="/">Bosh sahifa</a>
             <a href="/katalog">Katalog</a>
             <a href="/buyurtma">Buyurtma</a>
             <a href="/aloqa">Aloqa</a>
+            <button onclick="tungiRejim()" id="tema-tugma">🌙</button>
         </nav>
     </header>
 
     <div class="sahifa-wrapper">
-
-        <!-- Asosiy kontent -->
+        <div class="reklama">
+            <div class="reklama-blok">Reklama</div>
+            <div class="reklama-blok">Reklama</div>
+        </div>
         <main>
             {% block content %}{% endblock %}
         </main>
-
+        <div class="reklama">
+            <div class="reklama-blok">Reklama</div>
+            <div class="reklama-blok">Reklama</div>
+        </div>
     </div>
 
     <footer>
         <p>© 2026 Nastarin Pardalar</p>
     </footer>
+
+<script>
+    function tungiRejim() {
+        document.getElementById("html-root").classList.toggle("tungi");
+        const tungi = document.getElementById("html-root").classList.contains("tungi");
+        localStorage.setItem("tema", tungi ? "tungi" : "kunduz");
+        document.getElementById("tema-tugma").textContent = tungi ? "☀️" : "🌙";
+    }
+
+    // Sahifa ochilganda saqlangan temani yuklash
+    window.onload = function() {
+        const tema = localStorage.getItem("tema");
+        if (tema === "tungi") {
+            document.getElementById("html-root").classList.add("tungi");
+            document.getElementById("tema-tugma").textContent = "☀️";
+        }
+    }
+</script>
 
 </body>
 </html>

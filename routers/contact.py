@@ -28,9 +28,9 @@ def xabar_yuborish(
     telegram_matn = (
         f"💬 YANGI XABAR!\n"
         f"{'─' * 25}\n"
-        f"👤 Ism:     {ism}\n"
+        f"👤 Ism: {ism}\n"
         f"📞 Telefon: {telefon}\n"
-        f"💬 Xabar:   {xabar}\n"
+        f"💬 Xabar: {xabar}\n"
         f"{'─' * 25}\n"
         f"⏰ Nastarin Pardalar"
     )
@@ -41,8 +41,8 @@ Hurmatli admin,
 Yangi xabar kelib tushdi!
 
 Mijoz ismi : {ism}
-Telefon    : {telefon}
-Xabar      : {xabar}
+Telefon : {telefon}
+Xabar : {xabar}
 
 Xabarni admin panelda ko'rish uchun:
 http://127.0.0.1:8000/admin

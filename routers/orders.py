@@ -35,10 +35,10 @@ def buyurtma_yuborish(
     telegram_matn = (
         f"🛍️ YANGI BUYURTMA!\n"
         f"{'─' * 25}\n"
-        f"👤 Ism:     {ism}\n"
+        f"👤 Ism: {ism}\n"
         f"📞 Telefon: {telefon}\n"
         f"🎀 Mahsulot ID: {mahsulot_id}\n"
-        f"💬 Izoh:    {izoh or 'Yo`q'}\n"
+        f"💬 Izoh: {izoh or 'Yo`q'}\n"
         f"{'─' * 25}\n"
         f"⏰ Nastarin Pardalar"
     )
@@ -48,10 +48,10 @@ Hurmatli admin,
 
 Yangi buyurtma kelib tushdi!
 
-Mijoz ismi   : {ism}
-Telefon      : {telefon}
-Mahsulot ID  : {mahsulot_id}
-Izoh         : {izoh or "Yo'q"}
+Mijoz ismi: {ism}
+Telefon : {telefon}
+Mahsulot ID : {mahsulot_id}
+Izoh : {izoh or "Yo'q"}
 
 Buyurtmani admin panelda ko'rish uchun:
 http://127.0.0.1:8000/admin
@@ -69,3 +69,5 @@ Nastarin Pardalar tizimi
         email_yuborish("🛍️ Yangi buyurtma — Nastarin", email_matn)
     except Exception as e:
         print(f"Email xato: {e}")
+
+        return RedirectResponse(url="/buyurtma?muvaffaqiyat=1", status_code=303)

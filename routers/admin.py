@@ -20,8 +20,8 @@ supabase = create_client(SUPABASE_URL, SUPABASE_KEY)
 router = APIRouter()
 templates = Jinja2Templates(directory="templates")
 
-ADMIN_LOGIN   = "admin"
-ADMIN_PAROL   = "nastarin2026"
+ADMIN_LOGIN = "admin"
+ADMIN_PAROL = "nastarin2026"
 SESSIYA_KALIT = "nastarin_session"
 
 def admin_tekshir(request: Request):
