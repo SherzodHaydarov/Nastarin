@@ -21,6 +21,9 @@ def xabar_yuborish(
     xabar: str = Form(...),
     db: Session = Depends(get_db)
 ):
+    if not telefon.startswith("+998") or len(telefon) != 13:
+        return RedirectResponse(url="/aloqa?xato=1", status_code=303)
+
     yangi = Xabar(ism=ism, telefon=telefon, xabar=xabar)
     db.add(yangi)
     db.commit()
@@ -28,9 +31,9 @@ def xabar_yuborish(
     telegram_matn = (
         f"💬 YANGI XABAR!\n"
         f"{'─' * 25}\n"
-        f"👤 Ism: {ism}\n"
+        f"👤 Ism:     {ism}\n"
         f"📞 Telefon: {telefon}\n"
-        f"💬 Xabar: {xabar}\n"
+        f"💬 Xabar:   {xabar}\n"
         f"{'─' * 25}\n"
         f"⏰ Nastarin Pardalar"
     )
@@ -40,12 +43,12 @@ Hurmatli admin,
 
 Yangi xabar kelib tushdi!
 
-Mijoz ismi : {ism}
-Telefon : {telefon}
-Xabar : {xabar}
+Mijoz ismi: {ism}
+Telefon: {telefon}
+Xabar: {xabar}
 
 Xabarni admin panelda ko'rish uchun:
-http://127.0.0.1:8000/admin
+https://nastarin.up.railway.app/admin
 
 Hurmat bilan,
 Nastarin Pardalar tizimi

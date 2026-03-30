@@ -8,6 +8,10 @@
 <p class="success">Xabaringiz yuborildi! Tez orada bog'lanamiz.</p>
 {% endif %}
 
+{% if request.query_params.get("xato") %}
+<p class="xato">Telefon raqam +998 bilan boshlanishi va 12 ta raqamdan iborat bo'lishi kerak!</p>
+{% endif %}
+
 <div class="aloqa-wrapper">
 
     <form method="post" action="/aloqa" class="forma">
@@ -15,7 +19,10 @@
         <input type="text" name="ism" required placeholder="Ism Familiya">
 
         <label>Telefon</label>
-        <input type="text" name="telefon" required placeholder="+998 ( ) --- -- --">
+        <input type="tel" name="telefon" required
+            placeholder="+998901234567"
+            pattern="\+998[0-9]{9}"
+            title="+998 bilan boshlanuvchi 12 ta raqam kiriting">
 
         <label>Xabar</label>
         <textarea name="xabar" required placeholder="Savolingiz yoki xabaringiz..."></textarea>
@@ -26,31 +33,31 @@
     <div class="aloqa-info">
         <h3>Manzil</h3>
         <p>Qarshi tuman, Yangi Xonabod MFY, Neftchilar ko'chasi, 9-uy</p>
+
         <h3>Telefon</h3>
-        <a href="tel:+99891 644 75 52" class="telefon-link">+998 91 644 75 52</a> </br>
-        <a href="tel:+99897 312 19 16" class="telefon-link">+998 97 312 19 16</a>
+        <a href="tel:+998916447552" class="telefon-link">+998 91 644 75 52</a><br>
+        <a href="tel:+998973121916" class="telefon-link">+998 97 312 19 16</a>
+
         <h3>Ish vaqti</h3>
         <p>Dushanba — Shanba: 9:00 — 20:00</p>
 
-        <!-- Xarita -->
-    <div style="margin-top: 20px; border-radius: 10px; overflow: hidden;">
-        <iframe
-            src="https://www.google.com/maps?q=38.85188620457964,65.91801535700793&z=16&output=embed"
-            width="100%"
-            height="300"
-            style="border: none; display: block;"
-            allowfullscreen
-            loading="lazy">
-        </iframe>
-    </div>
+        <div style="margin-top: 20px; border-radius: 10px; overflow: hidden;">
+            <iframe
+                src="https://www.google.com/maps?q=38.85188620457964,65.91801535700793&z=16&output=embed"
+                width="100%"
+                height="300"
+                style="border: none; display: block;"
+                allowfullscreen
+                loading="lazy">
+            </iframe>
+        </div>
 
-    <a href="https://www.google.com/maps?q=38.85188620457964,65.91801535700793"
-       target="_blank"
-       class="btn"
-       style="display: inline-block; margin-top: 12px; font-size: 14px; padding: 10px 20px;">
-        Google Maps da ochish
-    </a>
-
+        <a href="https://www.google.com/maps?q=38.85188620457964,65.91801535700793"
+           target="_blank"
+           class="btn"
+           style="display: inline-block; margin-top: 12px; font-size: 14px; padding: 10px 20px;">
+            Google Maps da ochish
+        </a>
     </div>
 
 </div>

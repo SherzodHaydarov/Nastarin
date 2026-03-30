@@ -22,7 +22,7 @@ router = APIRouter()
 templates = Jinja2Templates(directory="templates")
 
 ADMIN_LOGIN = "admin"
-ADMIN_PAROL = "nastarin2026"
+ADMIN_PAROL = "VolidaM@"
 SESSIYA_KALIT = "nastarin_session"
 
 def admin_tekshir(request: Request):
