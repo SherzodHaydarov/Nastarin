@@ -8,9 +8,11 @@
     {% for mahsulot in mahsulotlar %}
     <div class="karta">
         <img src="{{ mahsulot.tasviri }}" alt="{{ mahsulot.nomi }}">
-        <h3>{{ mahsulot.nomi }}</h3>
-        <p>{{ mahsulot.narxi }} so'm</p>
-        <a href="/buyurtma?mahsulot={{ mahsulot.id }}">Buyurtma berish</a>
+        <div class="karta-matn">
+            <h3>{{ mahsulot.nomi }}</h3>
+            <p>{{ mahsulot.narxi }} so'm</p>
+            <a href="/buyurtma?mahsulot={{ mahsulot.id }}">Buyurtma berish</a>
+        </div>
     </div>
     {% else %}
         <p>Hozircha mahsulot yo'q.</p>
