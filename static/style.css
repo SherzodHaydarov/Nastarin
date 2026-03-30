@@ -673,3 +673,40 @@ html.tungi .login-wrapper .forma {
         padding: 0 16px;
     }
 }
+
+/* --- JADVAL RESPONSIVE --- */
+@media (max-width: 768px) {
+    .jadval {
+        display: block;
+        overflow-x: auto;
+        white-space: nowrap;
+    }
+
+    .stat-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .forma {
+        max-width: 100%;
+    }
+}
+
+/* --- TUNGI REJIM INPUTLAR --- */
+html.tungi .forma input,
+html.tungi .forma select,
+html.tungi .forma textarea {
+    background: #0f3460;
+    border-color: #4a4a6a;
+    color: #e0e0e0;
+}
+
+html.tungi .jadval select {
+    background: #0f3460;
+    color: #e0e0e0;
+    border-color: #4a4a6a;
+}
+
+html.tungi .stat-karta {
+    background: #16213e;
+    border-top-color: #c0a0a0;
+}
