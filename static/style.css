@@ -621,3 +621,55 @@ html.tungi h2 {
 html.tungi .login-wrapper .forma {
     background: #16213e;
 }
+
+/* --- RESPONSIVE --- */
+@media (max-width: 768px) {
+    header {
+        padding: 16px 20px;
+        flex-direction: column;
+        gap: 12px;
+        text-align: center;
+    }
+
+    nav a {
+        margin-left: 12px;
+        font-size: 12px;
+    }
+
+    .hero img {
+        height: 300px;
+    }
+
+    .hero-matn {
+        left: 24px;
+        bottom: 30px;
+    }
+
+    .hero-matn h1 {
+        font-size: 24px;
+    }
+
+    .xususiyatlar {
+        grid-template-columns: 1fr;
+    }
+
+    .katalog-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .aloqa-wrapper {
+        grid-template-columns: 1fr;
+    }
+
+    .buyurtma-wrapper {
+        grid-template-columns: 1fr;
+    }
+
+    .stat-grid {
+        grid-template-columns: 1fr;
+    }
+
+    main {
+        padding: 0 16px;
+    }
+}
