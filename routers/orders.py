@@ -28,6 +28,9 @@ def buyurtma_yuborish(
     izoh: str = Form(""),
     db: Session = Depends(get_db)
 ):
+    if not telefon.startswith("+998") or len(telefon) != 13:
+        return RedirectResponse(url="/buyurtma?xato=1", status_code=303)
+
     yangi = Buyurtma(ism=ism, telefon=telefon, mahsulot_id=mahsulot_id, izoh=izoh)
     db.add(yangi)
     db.commit()
@@ -49,12 +52,12 @@ Hurmatli admin,
 Yangi buyurtma kelib tushdi!
 
 Mijoz ismi: {ism}
-Telefon : {telefon}
-Mahsulot ID : {mahsulot_id}
-Izoh : {izoh or "Yo'q"}
+Telefon: {telefon}
+Mahsulot ID: {mahsulot_id}
+Izoh: {izoh or "Yo'q"}
 
 Buyurtmani admin panelda ko'rish uchun:
-http://127.0.0.1:8000/admin
+https://nastarin.up.railway.app/admin
 
 Hurmat bilan,
 Nastarin Pardalar tizimi
@@ -70,4 +73,4 @@ Nastarin Pardalar tizimi
     except Exception as e:
         print(f"Email xato: {e}")
 
-        return RedirectResponse(url="/buyurtma?muvaffaqiyat=1", status_code=303)
+    return RedirectResponse(url="/buyurtma?muvaffaqiyat=1", status_code=303)
