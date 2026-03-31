@@ -130,3 +130,47 @@ def xabar_ochir(request: Request, id: int, db: Session = Depends(get_db)):
     db.query(Xabar).filter(Xabar.id == id).delete()
     db.commit()
     return RedirectResponse(url="/admin", status_code=303)
+
+@router.get("/admin/mahsulot/tahrir/{id}")
+def mahsulot_tahrir(request: Request, id: int, db: Session = Depends(get_db)):
+    if not admin_tekshir(request):
+        return RedirectResponse(url="/admin/login", status_code=303)
+    mahsulot = db.query(Mahsulot).filter(Mahsulot.id == id).first()
+    return templates.TemplateResponse("admin/tahrir.html", {
+        "request": request,
+        "mahsulot": mahsulot
+    })
+
+@router.post("/admin/mahsulot/tahrir/{id}")
+async def mahsulot_tahrir_saqlash(
+    request: Request,
+    id: int,
+    nomi: str = Form(...),
+    narxi: float = Form(...),
+    rasm: UploadFile = File(None),
+    db: Session = Depends(get_db)
+):
+    if not admin_tekshir(request):
+        return RedirectResponse(url="/admin/login", status_code=303)
+
+    mahsulot = db.query(Mahsulot).filter(Mahsulot.id == id).first()
+    if mahsulot:
+        setattr(mahsulot, "nomi", nomi)
+        setattr(mahsulot, "narxi", narxi)
+
+        if rasm and rasm.filename:
+            rasm_bytes = await rasm.read()
+            kengaytma = str(rasm.filename).split(".")[-1]
+            rasm_nomi = f"{uuid.uuid4()}.{kengaytma}"
+
+            supabase.storage.from_(SUPABASE_BUCKET).upload(
+                path=rasm_nomi,
+                file=rasm_bytes,
+                file_options={"content-type": str(rasm.content_type)}
+            )
+
+            rasm_url = f"{SUPABASE_URL}/storage/v1/object/public/{SUPABASE_BUCKET}/{rasm_nomi}"
+            setattr(mahsulot, "tasviri", rasm_url)
+
+        db.commit()
+    return RedirectResponse(url="/admin", status_code=303)

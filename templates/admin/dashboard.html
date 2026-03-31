@@ -53,6 +53,22 @@
         <td>{{ m.narxi }} so'm</td>
         <td><a href="/admin/mahsulot/ochir/{{ m.id }}" class="ochir">O'chirish</a></td>
     </tr>
+    <tr>
+    <td style="text-align:center">
+        <img src="{{ m.tasviri }}" style="width:80px; height:60px; object-fit:cover; border-radius:6px;">
+    </td>
+    <td style="text-align:center">{{ m.nomi }}</td>
+    <td style="text-align:center">{{ m.narxi }} so'm</td>
+    <td style="text-align:center">
+        <a href="/admin/mahsulot/tahrir/{{ m.id }}" 
+           style="color: #8B4513; text-decoration: none; font-size: 13px; 
+                  padding: 4px 10px; border: 1px solid #8B4513; 
+                  border-radius: 4px; margin-right: 6px;">
+            Tahrirlash
+        </a>
+        <a href="/admin/mahsulot/ochir/{{ m.id }}" class="ochir">O'chirish</a>
+    </td>
+</tr>
     {% endfor %}
 </table>
 
