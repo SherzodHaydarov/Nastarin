@@ -21,38 +21,38 @@ supabase = create_client(SUPABASE_URL, SUPABASE_KEY)
 router = APIRouter()
 templates = Jinja2Templates(directory="templates")
 
-ADMIN_LOGIN = "admin"
-ADMIN_PAROL = "admin@"
+ADMIN_LOGIN = "ADMIN"
+ADMIN_PAROL = "ADMIN@"
 SESSIYA_KALIT = "nastarin_session"
 
 def admin_tekshir(request: Request):
     return request.cookies.get(SESSIYA_KALIT) == "kirdi"
 
-@router.get("/admin/login")
+@router.get("/123@admin-parol/login")
 def login_sahifa(request: Request):
     return templates.TemplateResponse("admin/login.html", {"request": request})
 
-@router.post("/admin/login")
+@router.post("/123@admin-parol/login")
 def login(request: Request, login: str = Form(...), parol: str = Form(...)):
     if login == ADMIN_LOGIN and parol == ADMIN_PAROL:
-        resp = RedirectResponse(url="/admin", status_code=303)
+        resp = RedirectResponse(url="/123@admin-parol", status_code=303)
         resp.set_cookie(SESSIYA_KALIT, "kirdi")
         return resp
-    return templates.TemplateResponse("admin/login.html", {
+    return templates.TemplateResponse("123@admin-parol/login.html", {
         "request": request,
         "xato": "Login yoki parol noto'g'ri!"
     })
 
 @router.get("/admin/logout")
 def logout():
-    resp = RedirectResponse(url="/admin/login", status_code=303)
+    resp = RedirectResponse(url="/123@admin-parol/login", status_code=303)
     resp.delete_cookie(SESSIYA_KALIT)
     return resp
 
-@router.get("/admin")
+@router.get("/123@admin-parol")
 def dashboard(request: Request, db: Session = Depends(get_db)):
     if not admin_tekshir(request):
-        return RedirectResponse(url="/admin/login", status_code=303)
+        return RedirectResponse(url="/123@admin-parol/login", status_code=303)
     return templates.TemplateResponse("admin/dashboard.html", {
         "request": request,
         "mahsulotlar": db.query(Mahsulot).all(),
@@ -60,7 +60,7 @@ def dashboard(request: Request, db: Session = Depends(get_db)):
         "xabarlar": db.query(Xabar).all(),
     })
 
-@router.post("/admin/mahsulot/qosh")
+@router.post("/123@admin-parol/mahsulot/qosh")
 async def mahsulot_qosh(
     request: Request,
     nomi: str = Form(...),
@@ -69,7 +69,7 @@ async def mahsulot_qosh(
     db: Session = Depends(get_db)
 ):
     if not admin_tekshir(request):
-        return RedirectResponse(url="/admin/login", status_code=303)
+        return RedirectResponse(url="/123@admin-parol/login", status_code=303)
 
     rasm_bytes = await rasm.read()
     kengaytma = str(rasm.filename).split(".")[-1]
@@ -85,12 +85,12 @@ async def mahsulot_qosh(
 
     db.add(Mahsulot(nomi=nomi, narxi=narxi, tasviri=rasm_url))
     db.commit()
-    return RedirectResponse(url="/admin", status_code=303)
+    return RedirectResponse(url="/123@admin-parol", status_code=303)
 
-@router.get("/admin/mahsulot/ochir/{id}")
+@router.get("/123@admin-parol/mahsulot/ochir/{id}")
 def mahsulot_ochir(request: Request, id: int, db: Session = Depends(get_db)):
     if not admin_tekshir(request):
-        return RedirectResponse(url="/admin/login", status_code=303)
+        return RedirectResponse(url="/123@admin-parol/login", status_code=303)
 
     mahsulot = db.query(Mahsulot).filter(Mahsulot.id == id).first()
     if mahsulot:
@@ -101,47 +101,47 @@ def mahsulot_ochir(request: Request, id: int, db: Session = Depends(get_db)):
             pass
         db.delete(mahsulot)
         db.commit()
-    return RedirectResponse(url="/admin", status_code=303)
+    return RedirectResponse(url="/123@admin-parol", status_code=303)
 
-@router.post("/admin/buyurtma/holat/{id}")
+@router.post("/123@admin-parol/buyurtma/holat/{id}")
 def buyurtma_holat(request: Request, id: int,
                    holat: str = Form(...),
                    db: Session = Depends(get_db)):
     if not admin_tekshir(request):
-        return RedirectResponse(url="/admin/login", status_code=303)
+        return RedirectResponse(url="/123@admin-parol/login", status_code=303)
     buyurtma = db.query(Buyurtma).filter(Buyurtma.id == id).first()
     if buyurtma:
         setattr(buyurtma, "holat", holat)
         db.commit()
-    return RedirectResponse(url="/admin", status_code=303)
+    return RedirectResponse(url="/123@admin-parol", status_code=303)
 
-@router.get("/admin/buyurtma/ochir/{id}")
+@router.get("/123@admin-parol/buyurtma/ochir/{id}")
 def buyurtma_ochir(request: Request, id: int, db: Session = Depends(get_db)):
     if not admin_tekshir(request):
-        return RedirectResponse(url="/admin/login", status_code=303)
+        return RedirectResponse(url="/123@admin-parol/login", status_code=303)
     db.query(Buyurtma).filter(Buyurtma.id == id).delete()
     db.commit()
-    return RedirectResponse(url="/admin", status_code=303)
+    return RedirectResponse(url="/123@admin-parol", status_code=303)
 
-@router.get("/admin/xabar/ochir/{id}")
+@router.get("/123@admin-parol/xabar/ochir/{id}")
 def xabar_ochir(request: Request, id: int, db: Session = Depends(get_db)):
     if not admin_tekshir(request):
-        return RedirectResponse(url="/admin/login", status_code=303)
+        return RedirectResponse(url="/123@admin-parol/login", status_code=303)
     db.query(Xabar).filter(Xabar.id == id).delete()
     db.commit()
-    return RedirectResponse(url="/admin", status_code=303)
+    return RedirectResponse(url="/123@admin-parol", status_code=303)
 
-@router.get("/admin/mahsulot/tahrir/{id}")
+@router.get("/123@admin-parol/mahsulot/tahrir/{id}")
 def mahsulot_tahrir(request: Request, id: int, db: Session = Depends(get_db)):
     if not admin_tekshir(request):
-        return RedirectResponse(url="/admin/login", status_code=303)
+        return RedirectResponse(url="/123@admin-parol/login", status_code=303)
     mahsulot = db.query(Mahsulot).filter(Mahsulot.id == id).first()
-    return templates.TemplateResponse("admin/tahrir.html", {
+    return templates.TemplateResponse("123@admin-parol/tahrir.html", {
         "request": request,
         "mahsulot": mahsulot
     })
 
-@router.post("/admin/mahsulot/tahrir/{id}")
+@router.post("/123@admin-parol/mahsulot/tahrir/{id}")
 async def mahsulot_tahrir_saqlash(
     request: Request,
     id: int,
@@ -151,7 +151,7 @@ async def mahsulot_tahrir_saqlash(
     db: Session = Depends(get_db)
 ):
     if not admin_tekshir(request):
-        return RedirectResponse(url="/admin/login", status_code=303)
+        return RedirectResponse(url="/123@admin-parol/login", status_code=303)
 
     mahsulot = db.query(Mahsulot).filter(Mahsulot.id == id).first()
     if mahsulot:
@@ -173,4 +173,4 @@ async def mahsulot_tahrir_saqlash(
             setattr(mahsulot, "tasviri", rasm_url)
 
         db.commit()
-    return RedirectResponse(url="/admin", status_code=303)
+    return RedirectResponse(url="/123@admin-parol", status_code=303)
